@@ -1,0 +1,36 @@
+{
+    "appKeys": {},
+    "capabilities": [
+        ""
+    ],
+    "companyName": "yuri@galanter.net",
+    "longName": "Blue Sun Quotes",
+    "projectType": "native",
+    "resources": {
+        "media": [
+            {
+                "file": "images/blue_sun1.png",
+                "name": "IMAGE_BACKGROUND",
+                "type": "png"
+            },
+            {
+                "file": "data/firefly.txt",
+                "name": "FIREFLY_QUOTES",
+                "type": "raw"
+            },
+            {
+                "characterRegex": "[0-9 ]",
+                "file": "fonts/RubikMonoOne-Regular.ttf",
+                "name": "FONT_RUBIK_MONO_35",
+                "type": "font"
+            }
+        ]
+    },
+    "shortName": "Blue Sun",
+    "uuid": "0b408dfb-6dbc-4665-8822-6e88411b2e29",
+    "versionCode": 1,
+    "versionLabel": "1.0",
+    "watchapp": {
+        "watchface": true
+    }
+}
