@@ -29,7 +29,7 @@
     "shortName": "Blue Sun",
     "uuid": "0b408dfb-6dbc-4665-8822-6e88411b2e29",
     "versionCode": 1,
-    "versionLabel": "1.0",
+    "versionLabel": "1.1",
     "watchapp": {
         "watchface": true
     }
