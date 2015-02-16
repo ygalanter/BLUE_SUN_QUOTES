@@ -8,11 +8,11 @@ static TextLayer *s_textlayer_quote;
 
 static void initialise_ui(void) {
   s_window = window_create();
-  window_set_fullscreen(s_window, true);
+  window_set_fullscreen(s_window, 1);
   
   s_res_gothic_24_bold = fonts_get_system_font(FONT_KEY_GOTHIC_24_BOLD);
   // s_textlayer_quote
-  s_textlayer_quote = text_layer_create(GRect(0, 0, 144, 1000));
+  s_textlayer_quote = text_layer_create(GRect(0, 0, 144, 2000));
   text_layer_set_text(s_textlayer_quote, "Text layer");
   text_layer_set_font(s_textlayer_quote, s_res_gothic_24_bold);
   layer_add_child(window_get_root_layer(s_window), (Layer *)s_textlayer_quote);
@@ -27,7 +27,7 @@ static void destroy_ui(void) {
 
 #define WINDOW_HEIGHT 168
 #define WINDOW_WIDTH 144  
-#define TEXTBOX_HEIGH 1000
+#define TEXTBOX_HEIGH 2000
 
 #define NO_OF_QUOTES 472
   
@@ -67,8 +67,9 @@ void animate_quote(int pixels_to_scroll_by) {
   animation_set_handlers((Animation*)s_box_animation, (AnimationHandlers) {
     .stopped = anim_stopped_handler
   }, NULL);
-  animation_set_duration((Animation*)s_box_animation, abs(pixels_to_scroll_by) * 30); // delay is proportional to text size
-  animation_set_delay((Animation*)s_box_animation, 2000);
+  animation_set_duration((Animation*)s_box_animation, abs(pixels_to_scroll_by) * 35); // delay is proportional to text size
+  animation_set_curve((Animation*)s_box_animation, AnimationCurveLinear);  // setting equal speed animation
+  animation_set_delay((Animation*)s_box_animation, 3000); //initial delay of 3 seconds to let user start reading quote
 
   animation_schedule((Animation*)s_box_animation);
 }

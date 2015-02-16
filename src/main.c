@@ -4,6 +4,7 @@
   
 char buffer_time[] = "00 00";
 char buffer_date[] = "00 00";
+char battery_buffer[]="100%";
 
 bool bQuoteDisplayed = false;
 
@@ -36,10 +37,13 @@ void tick_handler(struct tm *tick_time, TimeUnits units_changed)
         }        
      }
  
+    
+    // displaying time
     strftime(buffer_time, sizeof("00 00"), "%H %M", tick_time);
     strftime(buffer_date, sizeof("00 00"), "%m %d", tick_time);
-    set_texts(buffer_time, buffer_date);
-  
+    snprintf(battery_buffer, sizeof(battery_buffer), "%d%%", battery_state_service_peek().charge_percent);
+    set_texts(buffer_time, buffer_date, battery_buffer);
+    
 }    
   
   
