@@ -46,7 +46,7 @@ void tick_handler(struct tm *tick_time, TimeUnits units_changed)
   
     //battery
     BatteryChargeState state =  battery_state_service_peek();
-    if (state.charge_percent <=20 || state.charge_percent == 100 || state.is_charging) { // displaying only if percentage falls below 20 or battery is charging/fully charged
+    if (state.charge_percent <=20 || state.is_plugged) { // displaying only if percentage falls below 20 or battery is plugged in
        snprintf(battery_buffer, sizeof(battery_buffer), "%d%%", state.charge_percent);
     } else {
        strcpy(battery_buffer, "    " );
