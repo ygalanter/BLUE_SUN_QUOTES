@@ -5,7 +5,6 @@
 static Window *s_window;
 static GBitmap *s_res_image_background;
 static GFont s_res_font_rubik_mono_35;
-static GFont s_res_roboto_condensed_21;
 static BitmapLayer *s_bitmaplayer_background;
 static TextLayer *s_textlayer_date;
 static TextLayer *s_textlayer_time;
@@ -19,7 +18,6 @@ static void initialise_ui(void) {
   
   s_res_image_background = gbitmap_create_with_resource(RESOURCE_ID_IMAGE_BACKGROUND);
   s_res_font_rubik_mono_35 = fonts_load_custom_font(resource_get_handle(RESOURCE_ID_FONT_RUBIK_MONO_35));
-  s_res_roboto_condensed_21 = fonts_get_system_font(FONT_KEY_ROBOTO_CONDENSED_21);
   // s_bitmaplayer_background
   s_bitmaplayer_background = bitmap_layer_create(GRect(0, 0, 144, 168));
   bitmap_layer_set_bitmap(s_bitmaplayer_background, s_res_image_background);
@@ -42,18 +40,19 @@ static void initialise_ui(void) {
   layer_add_child(window_get_root_layer(s_window), (Layer *)s_textlayer_time);
   
   // s_textlayer_bluetooth
-  s_textlayer_bluetooth = text_layer_create(GRect(48, 55, 50, 15));
-  text_layer_set_background_color(s_textlayer_bluetooth, GColorBlack);
+  s_textlayer_bluetooth = text_layer_create(GRect(88, 110, 50, 15));
+  text_layer_set_background_color(s_textlayer_bluetooth, GColorClear);
   text_layer_set_text_color(s_textlayer_bluetooth, GColorWhite);
   text_layer_set_text(s_textlayer_bluetooth, "NO BT");
   text_layer_set_text_alignment(s_textlayer_bluetooth, GTextAlignmentCenter);
   layer_add_child(window_get_root_layer(s_window), (Layer *)s_textlayer_bluetooth);
   
   // s_textlayer_battery
-  s_textlayer_battery = text_layer_create(GRect(45, 70, 60, 21));
+  s_textlayer_battery = text_layer_create(GRect(90, 136, 47, 20));
+  text_layer_set_background_color(s_textlayer_battery, GColorClear);
+  text_layer_set_text_color(s_textlayer_battery, GColorWhite);
   text_layer_set_text(s_textlayer_battery, "100%");
   text_layer_set_text_alignment(s_textlayer_battery, GTextAlignmentCenter);
-  text_layer_set_font(s_textlayer_battery, s_res_roboto_condensed_21);
   layer_add_child(window_get_root_layer(s_window), (Layer *)s_textlayer_battery);
 }
 
@@ -76,9 +75,9 @@ static void destroy_ui(void) {
 // checking status of BT connection
 static void display_bt_layer(bool connected){
   if (connected) {
-    layer_set_frame((Layer *)s_textlayer_bluetooth, GRect(0, 0, 0, 0));
+    text_layer_set_text(s_textlayer_bluetooth,  "    ");
   } else {
-    layer_set_frame((Layer *)s_textlayer_bluetooth, GRect(48, 55, 50, 15));
+    text_layer_set_text(s_textlayer_bluetooth,  "NO BT");
   };  
 }
 

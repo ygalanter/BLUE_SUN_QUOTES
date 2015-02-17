@@ -95,7 +95,7 @@ void show_quote(void) {
   //loading quote, displaying and freeing memory
   ResHandle rh = resource_get_handle(RESOURCE_ID_FIREFLY_QUOTES);
   resource_load_byte_range(rh, aQuotePointers[number_of_quote] + 2, quote, size_of_quote);
-  quote[size_of_quote] = 0; //null terminating string
+  quote[size_of_quote - 1] = 0; //null terminating string
   text_layer_set_text(s_textlayer_quote, (char *)quote);
   
   // if height of quote > height of window, initiate animation to scroll

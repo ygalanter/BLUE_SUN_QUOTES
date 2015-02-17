@@ -12,6 +12,8 @@ bool bQuoteDisplayed = false;
 // when watch is shaken or tapped
 static void accel_tap_handler(AccelAxisType axis, int32_t direction)
 {
+   
+    if (axis != ACCEL_AXIS_Y) return; // only show quote for up-down movement
  
     if (bQuoteDisplayed) {
       hide_quote();
@@ -41,7 +43,15 @@ void tick_handler(struct tm *tick_time, TimeUnits units_changed)
     // displaying time
     strftime(buffer_time, sizeof("00 00"), "%H %M", tick_time);
     strftime(buffer_date, sizeof("00 00"), "%m %d", tick_time);
-    snprintf(battery_buffer, sizeof(battery_buffer), "%d%%", battery_state_service_peek().charge_percent);
+  
+    //battery
+    BatteryChargeState state =  battery_state_service_peek();
+    if (state.charge_percent <=20 || state.charge_percent == 100 || state.is_charging) { // displaying only if percentage falls below 20 or battery is charging/fully charged
+       snprintf(battery_buffer, sizeof(battery_buffer), "%d%%", state.charge_percent);
+    } else {
+       strcpy(battery_buffer, "    " );
+    }
+   
     set_texts(buffer_time, buffer_date, battery_buffer);
     
 }    
