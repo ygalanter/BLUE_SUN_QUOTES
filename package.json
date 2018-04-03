@@ -1,0 +1,45 @@
+{
+    "author": "yuri@galanter.net",
+    "dependencies": {},
+    "keywords": [],
+    "name": "blue-sun",
+    "pebble": {
+        "displayName": "Blue Sun Quotes",
+        "enableMultiJS": false,
+        "messageKeys": [],
+        "projectType": "native",
+        "resources": {
+            "media": [
+                {
+                    "file": "images/blue_sun1.png",
+                    "name": "IMAGE_BACKGROUND",
+                    "type": "png"
+                },
+                {
+                    "characterRegex": "[0-9 ]",
+                    "file": "fonts/RubikMonoOne-Regular.ttf",
+                    "name": "FONT_RUBIK_MONO_35",
+                    "type": "font"
+                },
+                {
+                    "file": "data/firefly.txt",
+                    "name": "FIREFLY_QUOTES",
+                    "type": "raw"
+                }
+            ]
+        },
+        "sdkVersion": "3",
+        "targetPlatforms": [
+            "aplite",
+            "basalt",
+            "chalk",
+            "diorite",
+            "emery"
+        ],
+        "uuid": "0b408dfb-6dbc-4665-8822-6e88411b2e29",
+        "watchapp": {
+            "watchface": true
+        }
+    },
+    "version": "1.3.0"
+}

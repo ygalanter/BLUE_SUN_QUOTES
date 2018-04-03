@@ -14,7 +14,7 @@ static TextLayer *s_textlayer_battery;
 static void initialise_ui(void) {
   s_window = window_create();
   window_set_background_color(s_window, GColorBlack);
-  window_set_fullscreen(s_window, 1);
+//  window_set_fullscreen(s_window, 1);
   
   s_res_image_background = gbitmap_create_with_resource(RESOURCE_ID_IMAGE_BACKGROUND);
   s_res_font_rubik_mono_35 = fonts_load_custom_font(resource_get_handle(RESOURCE_ID_FONT_RUBIK_MONO_35));
